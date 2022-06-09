@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Here's your todo list :</h1>
-  <% @todos.where(state: false).each do |todo| %>
+  <% @todos.where(state: false).reverse.each do |todo| %>
     <div class="todo">
       <%= link_to todo_path(id: todo, state: true), remote: true, method: :patch do %>
         <i class="fa-solid fa-check"></i>
