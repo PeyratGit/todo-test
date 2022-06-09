@@ -3,7 +3,7 @@
   <% @todos.where(state: false).each do |todo| %>
     <div class="todo">
       <%= link_to todo_path(id: todo, state: true), remote: true, method: :patch do %>
-        <div class="state">Mark as done</div>
+        <i class="fa-solid fa-check"></i>
       <% end %>
       <span class="todo-title"><%= todo.title %></span>
       <%= link_to "Show", todo_path(id: todo) %>
@@ -12,7 +12,7 @@
   <% @todos.where(state: true).each do |todo| %>
     <div class="todo crossed-out">
       <%= link_to todo_path(id: todo, state: false), remote: true, method: :patch do %>
-        <div class="state">Mark as not done</div>
+        <i class="fa-solid fa-xmark"></i>
       <% end %>
       <del class="todo-title"><%= todo.title %></del>
       <%= link_to "Show", todo_path(id: todo) %>
