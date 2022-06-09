@@ -18,7 +18,8 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @todo = Todo.new(todo_params_strict)
+    @todo.state = false
     @todo.user = current_user
     if @todo.save
       redirect_to todo_path(@todo)
@@ -38,7 +39,11 @@ class TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    @todo.update(todo_params)
+    if params[:state].nil?
+      @todo.update(todo_params_strict)
+    else
+      @todo.update(todo_params)
+    end
     if params[:title].nil?
       redirect_to todos_path
     else
@@ -53,6 +58,10 @@ class TodosController < ApplicationController
   end
 
   private
+
+  def todo_params_strict
+    params.require(:todo).permit(:title, :description)
+  end
 
   def todo_params
     params.permit(:title, :description, :state, :id)

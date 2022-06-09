@@ -18,4 +18,9 @@
       <%= link_to "Show", todo_path(id: todo) %>
     </div>
   <% end %>
+  <div>
+    <%= link_to new_todo_path do %>
+      <span>New Todo</span>
+    <% end %>
+  </div>
 </div>
