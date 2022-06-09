@@ -1,0 +1,9 @@
+<div class="form-container">
+  <div class="form">
+    <%= simple_form_for @todo, method: :patch do |f| %>
+      <%= f.input :title, label: false, placeholder: 'My great title', input_html: {class: "input title"} %>
+      <%= f.input :description, label: false, placeholder: 'A nice description', input_html: {class: "input content"} %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

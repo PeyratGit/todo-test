@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="todo-card">
+    <div class="todo-card-title"><%= @todo.title %></div>
+    <div class="todo-card-description">
+      <span>Description :</span>
+      <%= @todo.description %>
+    </div>
+    <%= link_to edit_todo_path(@todo) do %>
+      Edit your todo
+    <% end %>
+  </div>
+</div>

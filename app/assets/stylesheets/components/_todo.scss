@@ -1,0 +1,24 @@
+.todo {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border: 2px solid black;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  text-align: center;
+  span {
+    margin: 0 5px 0 5px;
+  }
+}
+
+.todo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  .todo-card-title {
+    margin-bottom: 10px;
+  }
+}
