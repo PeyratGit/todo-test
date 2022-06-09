@@ -1,0 +1,9 @@
+<h1>Here's your todo list :</h1>
+<% @todos.each do |todo| %>
+  <%= link_to todo_path(todo) do %>
+    <div class="todo">
+      <button class="state"></button>
+      <span class="todo-title"><%= todo.title %></span>
+    </div>
+  <% end %>
+<% end %>
