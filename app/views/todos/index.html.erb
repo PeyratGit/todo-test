@@ -1,22 +1,25 @@
 <div class="container">
+
   <h1>Here's your todo list :</h1>
-  <% @todos.where(state: false).reverse.each do |todo| %>
-    <div class="todo">
-      <%= link_to todo_path(id: todo, state: true), remote: true, method: :patch do %>
-        <i class="fa-solid fa-check"></i>
-      <% end %>
-      <span class="todo-title"><%= todo.title %></span>
-      <%= link_to "Show", todo_path(id: todo) %>
-    </div>
-  <% end %>
-  <% @todos.where(state: true).each do |todo| %>
-    <div class="todo crossed-out">
-      <%= link_to todo_path(id: todo, state: false), remote: true, method: :patch do %>
-        <i class="fa-solid fa-xmark"></i>
-      <% end %>
-      <del class="todo-title"><%= todo.title %></del>
-      <%= link_to "Show", todo_path(id: todo) %>
-    </div>
+  <% if current_user.todos.empty? == false  %>
+    <% @todos.where(state: false).reverse.each do |todo| %>
+      <div class="todo">
+        <%= link_to todo_path(id: todo, state: true), remote: true, method: :patch do %>
+          <i class="fa-solid fa-check"></i>
+        <% end %>
+        <span class="todo-title"><%= todo.title %></span>
+        <%= link_to "Show", todo_path(id: todo) %>
+      </div>
+    <% end %>
+    <% @todos.where(state: true).each do |todo| %>
+      <div class="todo crossed-out">
+        <%= link_to todo_path(id: todo, state: false), remote: true, method: :patch do %>
+          <i class="fa-solid fa-xmark"></i>
+        <% end %>
+        <del class="todo-title"><%= todo.title %></del>
+        <%= link_to "Show", todo_path(id: todo) %>
+      </div>
+    <% end %>
   <% end %>
   <div>
     <%= link_to new_todo_path do %>
